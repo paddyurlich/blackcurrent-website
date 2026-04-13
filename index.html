@@ -67,6 +67,24 @@
     letter-spacing: -0.02em;
   }
 
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--steel);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.15s;
+  }
+
+  .nav-link:hover { color: var(--white); }
+  .nav-link.active { color: var(--white); }
+
   .nav-cta {
     background: var(--rust);
     color: var(--white);
@@ -970,6 +988,10 @@
   </g>
 </svg>
   </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="faq.html" class="nav-link">FAQ</a>
+  </div>
   <a href="#cta" class="nav-cta">Get a Design &amp; Quote</a>
 </nav>
 

@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blackcurrent — FAQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rust: #ec5f30;
+    --rust-dark: #c44a20;
+    --charcoal: #22201d;
+    --charcoal-soft: #2e2b27;
+    --egg: #fffaef;
+    --white: #ffffff;
+    --sapphire: #5597d1;
+    --steel: #a2a09e;
+    --lead: #3a3a3a;
+    --section-pad: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 6rem);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    background: var(--egg);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem clamp(1.5rem, 6vw, 6rem);
+    background: var(--charcoal);
+    border-bottom: 1px solid #3a3a3a;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+
+  .logo-text {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+
+  .logo-wordmark {
+    height: 22px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--steel);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.15s;
+  }
+
+  .nav-link:hover { color: var(--white); }
+  .nav-link.active { color: var(--white); }
+
+  .nav-cta {
+    background: var(--rust);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: background 0.15s;
+    display: inline-block;
+  }
+
+  .nav-cta:hover { background: var(--rust-dark); }
+
+  @media (max-width: 600px) { .nav-links { display: none; } }
+
+  /* PAGE HERO */
+  .page-hero {
+    background: var(--charcoal);
+    padding: var(--section-pad);
+    padding-top: calc(clamp(4rem, 8vw, 7rem) + 5rem);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 8px;
+    height: 100%;
+    background: var(--rust);
+  }
+
+  .page-hero-inner {
+    max-width: 760px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.25rem;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
+
+  .page-hero h1 span { color: var(--rust); }
+
+  .page-hero p {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: var(--steel);
+    font-weight: 400;
+    max-width: 540px;
+    line-height: 1.7;
+  }
+
+  /* TOP FAQ CARDS — key questions */
+  .top-faqs {
+    background: var(--egg);
+    padding: var(--section-pad);
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.25rem;
+  }
+
+  .top-faqs h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+  }
+
+  .top-faq-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--charcoal);
+  }
+
+  .top-faq-card {
+    background: var(--white);
+    padding: 2.25rem 2rem;
+    border-top: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .top-faq-card:hover { border-top-color: var(--rust); }
+
+  .top-faq-q {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .top-faq-a {
+    font-size: 0.9rem;
+    color: var(--lead);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  /* MID-PAGE CTA */
+  .mid-cta {
+    background: var(--rust);
+    padding: 3.5rem clamp(1.5rem, 6vw, 6rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .mid-cta h3 {
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .mid-cta p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.75);
+    margin-top: 0.4rem;
+    font-weight: 400;
+  }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--rust);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.85rem 2rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: background 0.15s, color 0.15s;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .btn-white:hover {
+    background: var(--egg);
+  }
+
+  /* FAQ ACCORDION SECTIONS */
+  .faq-sections {
+    background: var(--egg);
+    padding: var(--section-pad);
+  }
+
+  .faq-sections-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .faq-sections-header h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+
+  .faq-sections-header p {
+    font-size: 1rem;
+    color: var(--lead);
+    font-weight: 400;
+    max-width: 480px;
+  }
+
+  .faq-category {
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 0;
+  }
+
+  .faq-category:last-child {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .faq-category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    user-select: none;
+    gap: 1rem;
+  }
+
+  .faq-category-header:hover .faq-cat-title {
+    color: var(--rust);
+  }
+
+  .faq-cat-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    transition: color 0.15s;
+  }
+
+  .faq-cat-toggle {
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--lead);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .faq-cat-toggle svg {
+    transition: transform 0.3s;
+  }
+
+  .faq-category.open .faq-cat-toggle {
+    background: var(--rust);
+    border-color: var(--rust);
+  }
+
+  .faq-category.open .faq-cat-toggle svg {
+    transform: rotate(45deg);
+  }
+
+  .faq-cat-toggle svg path {
+    transition: fill 0.15s;
+  }
+
+  .faq-category.open .faq-cat-toggle svg path {
+    fill: var(--white);
+  }
+
+  .faq-items {
+    display: none;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--charcoal);
+    margin-bottom: 0;
+    overflow: hidden;
+  }
+
+  .faq-category.open .faq-items {
+    display: flex;
+  }
+
+  .faq-item {
+    background: var(--white);
+    border-left: 3px solid transparent;
+    transition: border-color 0.15s;
+  }
+
+  .faq-item:hover { border-left-color: var(--rust); }
+
+  .faq-item-q {
+    padding: 1.5rem 1.75rem 1.5rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    gap: 1rem;
+  }
+
+  .faq-item-q span {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .faq-item-arrow {
+    font-size: 1rem;
+    color: var(--steel);
+    transition: transform 0.25s, color 0.15s;
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-item-arrow {
+    transform: rotate(90deg);
+    color: var(--rust);
+  }
+
+  .faq-item-a {
+    display: none;
+    padding: 0 1.75rem 1.5rem 1.5rem;
+    font-size: 0.9rem;
+    color: var(--lead);
+    font-weight: 400;
+    line-height: 1.75;
+  }
+
+  .faq-item.open .faq-item-a {
+    display: block;
+  }
+
+  /* CLOSING CTA */
+  .cta-section {
+    background: var(--charcoal);
+    padding: var(--section-pad);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 8px;
+    height: 100%;
+    background: var(--rust);
+  }
+
+  .cta-section h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+  }
+
+  .cta-section p {
+    font-size: 1rem;
+    color: var(--steel);
+    font-weight: 400;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    padding: 2.5rem clamp(1.5rem, 6vw, 6rem);
+    border-top: 1px solid var(--lead);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--steel);
+    font-weight: 400;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  footer a {
+    color: var(--steel);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  footer a:hover { color: var(--white); }
+
+  /* STICKY CTA */
+  .sticky-cta {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--rust);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 0.85rem 1.75rem;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s, background 0.15s;
+    z-index: 99;
+    box-shadow: 0 4px 20px rgba(236, 95, 48, 0.35);
+  }
+
+  .sticky-cta.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .sticky-cta:hover { background: var(--rust-dark); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .top-faq-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .mid-cta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .top-faq-grid {
+      grid-template-columns: 1fr;
+    }
+
+
+
+    .cta-section {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 258.1 35.55" class="logo-wordmark">
+      <path d="M50.11,30.75h-5.54V.32h5.54v30.43Z" style="fill:#ffffff;"/>
+      <path d="M75,30.75h-5.4v-2.26c-1.48,1.84-3.74,2.88-6.1,2.79-5.61-.11-10.07-4.74-9.96-10.35,0-.15,0-.3.02-.44-.25-5.58,4.07-10.32,9.65-10.57.1,0,.2,0,.29,0,2.36-.09,4.62.95,6.1,2.79v-2.43h5.4v20.49ZM59.21,20.49c0,2.92,2.37,5.29,5.29,5.29,2.92,0,5.29-2.37,5.29-5.29,0-2.92-2.37-5.29-5.29-5.29s-5.29,2.37-5.29,5.29h0Z" style="fill:#ffffff;"/>
+      <path d="M97.61,13.58l-3.95,3.35c-1.09-1.31-2.7-2.07-4.41-2.08-2.88.05-5.18,2.43-5.13,5.31,0,.11,0,.22.02.33-.25,2.87,1.87,5.4,4.74,5.66.12.01.25.02.37.02,1.71-.03,3.33-.79,4.44-2.08l3.95,3.53c-1.98,2.51-5.03,3.93-8.22,3.84-5.84.2-10.73-4.38-10.93-10.22,0-.19,0-.38,0-.57,0-5.84,4.73-10.58,10.57-10.59.12,0,.24,0,.36,0,3.12-.19,6.16,1.1,8.18,3.49h0Z" style="fill:#ffffff;"/>
+      <path d="M106.07,17.63h1.97l5.75-7.3h6.77l-8.08,9.59,8.15,10.83h-6.77l-5.92-8.29h-1.87v8.29h-5.5V.32h5.5v17.32Z" style="fill:#ffffff;"/>
+      <path d="M139.5,13.58l-3.99,3.35c-1.07-1.32-2.68-2.08-4.37-2.08-2.88.05-5.18,2.43-5.13,5.31,0,.11,0,.22.02.33-.25,2.87,1.87,5.4,4.74,5.66.12.01.25.02.37.02,1.71-.03,3.33-.79,4.44-2.08l3.95,3.53c-2.02,2.44-5.06,3.8-8.22,3.67-5.84.2-10.73-4.38-10.93-10.22,0-.19,0-.38,0-.57,0-5.84,4.73-10.58,10.57-10.59.12,0,.24,0,.36,0,3.15-.15,6.19,1.22,8.18,3.67Z" style="fill:#ffffff;"/>
+      <path d="M161.69,22.04c.25,4.86-3.49,9.01-8.35,9.26-.4.02-.81.01-1.21-.02-4.84.49-9.17-3.03-9.67-7.88-.05-.45-.06-.91-.03-1.36v-11.78h5.54v11.28c0,3.28,1.8,4.62,4.16,4.62s4.06-1.48,4.06-4.62v-11.28h5.5v11.78Z" style="fill:#ffffff;"/>
+      <path d="M180.34,10.16l-.85,5.47c-1.06-.42-2.18-.63-3.32-.63-2.25-.16-4.21,1.55-4.36,3.8-.02.27-.01.55.03.82v11.14h-5.61V10.26h5.36v2.26c1.28-1.89,3.47-2.95,5.75-2.79,1.02-.04,2.03.1,3,.42Z" style="fill:#ffffff;"/>
+      <path d="M196.99,10.16l-.85,5.47c-1.05-.42-2.18-.63-3.31-.63-2.25-.16-4.21,1.54-4.36,3.8-.02.27-.01.55.03.82v11.14h-5.5V10.26h5.36v2.26c1.28-1.89,3.47-2.95,5.75-2.79.98-.03,1.96.11,2.89.42h0Z" style="fill:#ffffff;"/>
+      <path d="M218.04,20.49c.04.62.04,1.25,0,1.87h-14.63c.36,2.53,2.6,4.37,5.15,4.23,1.94.02,3.83-.66,5.33-1.9l3.21,3.53c-2.35,2.07-5.4,3.17-8.53,3.07-5.6.24-10.34-4.11-10.58-9.71-.01-.29-.01-.58,0-.87-.41-5.56,3.76-10.39,9.31-10.8.35-.03.7-.03,1.05-.02,5.45.08,9.81,4.57,9.72,10.02,0,.2-.01.4-.03.59h0ZM203.44,18.59h9.06c-.17-2.32-2.11-4.12-4.44-4.09-2.39-.1-4.43,1.71-4.62,4.09Z" style="fill:#ffffff;"/>
+      <path d="M240.89,17.63v13.05h-5.54v-11.18c0-2.96-1.48-4.58-3.98-4.58-2.32-.09-4.27,1.72-4.36,4.03,0,.2,0,.39.02.59v11.21h-5.54V10.26h5.4v2.43c1.35-1.97,3.64-3.1,6.03-2.96,4.2-.2,7.77,3.05,7.97,7.25.01.22.01.43,0,.65Z" style="fill:#ffffff;"/>
+      <path d="M243.82,10.26v-6.1h5.54v6.1h7.41v4.9h-7.41v7.51c0,2.54,1.34,3.53,3.07,3.53,1.33-.19,2.59-.72,3.67-1.52l2.01,4.3c-1.97,1.43-4.34,2.18-6.77,2.15-5.08.14-7.51-2.72-7.51-8.04v-7.93" style="fill:#ffffff;"/>
+      <path d="M17.91,0C8.1-.08.08,7.82,0,17.64c-.08,9.82,7.82,17.84,17.64,17.91.09,0,.18,0,.28,0V0Z" style="fill:#ffffff;"/>
+      <path d="M32.62,14.53c3.53,0,6-1.2,6-4.09h0c0-2.54-1.94-3.99-5.47-3.99h-8.22v8.08h7.69Z" style="fill:#ffffff;"/>
+      <path d="M33.11,28.95c3.95,0,6.42-1.2,6.42-4.09v-.18c0-2.54-2.08-3.99-5.82-3.99h-8.78v8.25h8.18Z" style="fill:#ffffff;"/>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="faq.html" class="nav-link active">FAQ</a>
+  </div>
+  <a href="mailto:hello@blackcurrent.io" class="nav-cta">Talk to Us</a>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero" id="hero">
+  <div class="page-hero-inner">
+    <p class="hero-eyebrow">FAQ</p>
+    <h1>Your Questions,<br><span>Answered.</span></h1>
+    <p>Everything you need to know about Blackcurrent, Flex, and what intelligent energy management can deliver for your business.</p>
+  </div>
+</section>
+
+<!-- TOP FAQs — key questions up front -->
+<section class="top-faqs">
+  <p class="section-label">The Essentials</p>
+  <h2>Start Here</h2>
+  <div class="top-faq-grid">
+    <div class="top-faq-card">
+      <div class="top-faq-q">What does Blackcurrent actually do?</div>
+      <div class="top-faq-a">We help businesses reduce energy costs and improve operational performance through intelligent energy systems. We design and install solar and battery solutions — and provide the software (Flex) to actively manage and optimise how energy is used across your site.</div>
+    </div>
+    <div class="top-faq-card">
+      <div class="top-faq-q">What makes Blackcurrent different from other solar providers?</div>
+      <div class="top-faq-a">Most providers stop at installation. Blackcurrent focuses on ongoing performance and value — ensuring your system continues to deliver financial returns through monitoring, optimisation, and control. The work doesn't stop at handover.</div>
+    </div>
+    <div class="top-faq-card">
+      <div class="top-faq-q">What is Flex?</div>
+      <div class="top-faq-a">Flex is Blackcurrent's energy management platform — providing real-time visibility, insights, and control over your system. It's not just monitoring. Flex is a decision and optimisation platform focused on financial outcomes.</div>
+    </div>
+    <div class="top-faq-card">
+      <div class="top-faq-q">How quickly will I see results?</div>
+      <div class="top-faq-a">You'll have immediate visibility into your system from day one. Optimisation gains compound over time as Flex learns your energy profile and continuously improves how your system performs.</div>
+    </div>
+    <div class="top-faq-card">
+      <div class="top-faq-q">Will I need to manage the system myself?</div>
+      <div class="top-faq-a">No. Automation handles the day-to-day. Flex runs in the background, continuously optimising battery charge, import/export, and loads — with optional manual control available if you want it.</div>
+    </div>
+    <div class="top-faq-card">
+      <div class="top-faq-q">Is Blackcurrent right for my business?</div>
+      <div class="top-faq-a">If energy is a meaningful cost in your business, the answer is likely yes. We work with SMEs, commercial and industrial businesses, and organisations with high or variable energy demand. We'll assess your site and tell you honestly what's possible.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MID-PAGE CTA -->
+<div class="mid-cta">
+  <div>
+    <h3>Ready to see what your system could deliver?</h3>
+    <p>Get a bespoke design and quote — no obligation, no generic proposals.</p>
+  </div>
+  <a href="/cdn-cgi/l/email-protection#ee868b828281ae8c828f8d858d9b9c9c8b809ac08781" class="btn-white">Get a Design &amp; Quote</a>
+</div>
+
+<!-- ACCORDION FAQ SECTIONS -->
+<section class="faq-sections">
+  <div class="faq-sections-header">
+    <p class="section-label">All Questions</p>
+    <h2>Explore by Topic</h2>
+    <p>Tap a category to expand. Can't find what you're looking for? Talk to us directly.</p>
+  </div>
+
+  <!-- About Flex -->
+  <div class="faq-category" id="cat-flex">
+    <div class="faq-category-header">
+      <span class="faq-cat-title">About the Flex Platform</span>
+      <div class="faq-cat-toggle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+      </div>
+    </div>
+    <div class="faq-items">
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>What can I see in Flex?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Flex gives you full visibility across your system: solar generation, consumption, import/export activity, battery performance, system health, and estimated costs and savings — all in one place, in real time.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>Is Flex just monitoring?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">No. Flex is a decision and optimisation platform. Monitoring is the foundation, but the real value is in what Flex does with that data — automatically adjusting your system to maximise financial performance, and surfacing insights that help you make smarter energy decisions.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>Can I see the financial impact of my system?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Yes. Flex provides live financial dashboards that show cost savings, revenue, performance trends, and how your system is performing versus expectations. You get a clear picture of what your investment is actually delivering — in dollar terms.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business Value -->
+  <div class="faq-category" id="cat-value">
+    <div class="faq-category-header">
+      <span class="faq-cat-title">Business Value &amp; Cost Reduction</span>
+      <div class="faq-cat-toggle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+      </div>
+    </div>
+    <div class="faq-items">
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>How does Blackcurrent reduce energy costs?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">We reduce costs across multiple levers: solar generation, peak demand reduction, battery optimisation, tariff analysis, and load shifting. Flex actively manages all of these — not as a one-time configuration, but as an ongoing, continuously improving process.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>Can I earn revenue from my system?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Yes — depending on your setup, you can generate revenue through energy export. Flex also opens up future opportunities to interact with the grid and participate in emerging energy markets as they evolve.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>Can Flex help with electricity tariffs?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Yes. Flex analyses your current electricity plan and can compare alternatives — helping you identify the most cost-effective tariff structure for your usage patterns and system configuration.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Performance & Assurance -->
+  <div class="faq-category" id="cat-performance">
+    <div class="faq-category-header">
+      <span class="faq-cat-title">Performance &amp; Assurance</span>
+      <div class="faq-cat-toggle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+      </div>
+    </div>
+    <div class="faq-items">
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>How do I know the system is working properly?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Flex compares actual system performance against expected benchmarks, and flags any discrepancies automatically. You always have a clear view of how your system is tracking — and Blackcurrent is monitoring alongside you.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>What happens if there's an issue?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Blackcurrent proactively monitors your system and resolves issues before they become problems. You don't need to raise a ticket and wait — we're watching the data and will get in touch if something needs attention.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Control & Optimisation -->
+  <div class="faq-category" id="cat-control">
+    <div class="faq-category-header">
+      <span class="faq-cat-title">Control &amp; Optimisation</span>
+      <div class="faq-cat-toggle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+      </div>
+    </div>
+    <div class="faq-items">
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>Can the system be automated?</span>
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-shrink:0;">
+            <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--charcoal);background:var(--egg);border:1.5px solid var(--steel);padding:0.2rem 0.6rem;white-space:nowrap;">Coming Soon</span>
+            <span class="faq-item-arrow">›</span>
+          </div>
+        </div>
+        <div class="faq-item-a">Yes. Battery charging and discharging, import/export decisions, and connected loads can all be automated through Flex. The system learns your patterns and adjusts continuously — no manual input required.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>Can it integrate with our business operations?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Yes. Flex can be configured to align energy usage with your operational patterns — so your system is working with your business, not independent of it. This is one of the key ways we unlock value beyond standard solar.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Installation & Technology -->
+  <div class="faq-category" id="cat-install">
+    <div class="faq-category-header">
+      <span class="faq-cat-title">Installation &amp; Technology</span>
+      <div class="faq-cat-toggle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+      </div>
+    </div>
+    <div class="faq-items">
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>What gets installed at my site?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">A typical Blackcurrent system includes solar panels, an optional battery (strongly recommended for maximum value), and an Edge device. The Edge device collects real-time data from your system and enables Flex to monitor and control it remotely.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>What does the Edge device do?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Edge is the intelligence layer on-site. It collects performance data across your entire energy system and sends it to Flex — enabling real-time monitoring, automated control, and ongoing optimisation from our platform.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>Will it work with my existing solar or energy systems?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Often, yes. Many existing systems can be integrated with Flex and the Edge device, allowing you to benefit from intelligent management without replacing your current infrastructure. We assess compatibility during onboarding.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Support & Service -->
+  <div class="faq-category" id="cat-support">
+    <div class="faq-category-header">
+      <span class="faq-cat-title">Support &amp; Service</span>
+      <div class="faq-cat-toggle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+      </div>
+    </div>
+    <div class="faq-items">
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>What ongoing support do you provide?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Blackcurrent provides continuous monitoring and optimisation as part of our service. This isn't a one-off installation with a helpdesk number — we actively manage your system's performance and stay accountable to the outcomes we committed to.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>Is it a one-off install or an ongoing relationship?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Both — and that's what makes us different. We handle design and installation, then stay engaged through continuous service. Most providers stop at handover. We don't. The Flex Platform and our team continue working to improve your results long after day one.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Future Capability -->
+  <div class="faq-category" id="cat-future">
+    <div class="faq-category-header">
+      <span class="faq-cat-title">Future Capability</span>
+      <div class="faq-cat-toggle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+      </div>
+    </div>
+    <div class="faq-items">
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>Will the platform improve over time?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Yes. Flex is continuously improved with new features, smarter optimisation logic, and expanded capabilities. Your system gets better over time — without requiring hardware changes or additional investment from you.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>What future market opportunities are available?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">As energy markets evolve, Flex positions your business to participate — including grid interaction, demand response programmes, and emerging revenue streams from your energy assets. We're building toward a future where your system actively earns, not just saves.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Getting Started -->
+  <div class="faq-category" id="cat-start">
+    <div class="faq-category-header">
+      <span class="faq-cat-title">Getting Started</span>
+      <div class="faq-cat-toggle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+      </div>
+    </div>
+    <div class="faq-items">
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>How do I get started?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">Start with a consultation. We'll assess your site, review your energy data, and develop a tailored design that's specific to your business — not a generic proposal. From there, we'll walk you through costs, returns, and timeline.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item-q">
+          <span>How do I know if it's suitable for my business?</span>
+          <span class="faq-item-arrow">›</span>
+        </div>
+        <div class="faq-item-a">If energy is a meaningful cost in your operation, a Blackcurrent system is likely to deliver strong returns. We work with SMEs, commercial operators, and industrial businesses. The best way to find out is to talk to us — we'll tell you honestly what's possible for your site.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- CLOSING CTA -->
+<section class="cta-section" id="cta">
+  <div>
+    <h2>Still Have Questions?</h2>
+    <p>Talk to our team — no obligation, no pressure.</p>
+  </div>
+  <a href="/cdn-cgi/l/email-protection#177f727b7b7857757b76747c74626565727963397e78" class="btn-white">Talk to Us</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 258.1 35.55" style="height:20px;width:auto;display:block;">
+        <path d="M50.11,30.75h-5.54V.32h5.54v30.43Z" style="fill:#ffffff;"/>
+        <path d="M75,30.75h-5.4v-2.26c-1.48,1.84-3.74,2.88-6.1,2.79-5.61-.11-10.07-4.74-9.96-10.35,0-.15,0-.3.02-.44-.25-5.58,4.07-10.32,9.65-10.57.1,0,.2,0,.29,0,2.36-.09,4.62.95,6.1,2.79v-2.43h5.4v20.49ZM59.21,20.49c0,2.92,2.37,5.29,5.29,5.29,2.92,0,5.29-2.37,5.29-5.29,0-2.92-2.37-5.29-5.29-5.29s-5.29,2.37-5.29,5.29h0Z" style="fill:#ffffff;"/>
+        <path d="M97.61,13.58l-3.95,3.35c-1.09-1.31-2.7-2.07-4.41-2.08-2.88.05-5.18,2.43-5.13,5.31,0,.11,0,.22.02.33-.25,2.87,1.87,5.4,4.74,5.66.12.01.25.02.37.02,1.71-.03,3.33-.79,4.44-2.08l3.95,3.53c-1.98,2.51-5.03,3.93-8.22,3.84-5.84.2-10.73-4.38-10.93-10.22,0-.19,0-.38,0-.57,0-5.84,4.73-10.58,10.57-10.59.12,0,.24,0,.36,0,3.12-.19,6.16,1.1,8.18,3.49h0Z" style="fill:#ffffff;"/>
+        <path d="M106.07,17.63h1.97l5.75-7.3h6.77l-8.08,9.59,8.15,10.83h-6.77l-5.92-8.29h-1.87v8.29h-5.5V.32h5.5v17.32Z" style="fill:#ffffff;"/>
+        <path d="M139.5,13.58l-3.99,3.35c-1.07-1.32-2.68-2.08-4.37-2.08-2.88.05-5.18,2.43-5.13,5.31,0,.11,0,.22.02.33-.25,2.87,1.87,5.4,4.74,5.66.12.01.25.02.37.02,1.71-.03,3.33-.79,4.44-2.08l3.95,3.53c-2.02,2.44-5.06,3.8-8.22,3.67-5.84.2-10.73-4.38-10.93-10.22,0-.19,0-.38,0-.57,0-5.84,4.73-10.58,10.57-10.59.12,0,.24,0,.36,0,3.15-.15,6.19,1.22,8.18,3.67Z" style="fill:#ffffff;"/>
+        <path d="M161.69,22.04c.25,4.86-3.49,9.01-8.35,9.26-.4.02-.81.01-1.21-.02-4.84.49-9.17-3.03-9.67-7.88-.05-.45-.06-.91-.03-1.36v-11.78h5.54v11.28c0,3.28,1.8,4.62,4.16,4.62s4.06-1.48,4.06-4.62v-11.28h5.5v11.78Z" style="fill:#ffffff;"/>
+        <path d="M180.34,10.16l-.85,5.47c-1.06-.42-2.18-.63-3.32-.63-2.25-.16-4.21,1.55-4.36,3.8-.02.27-.01.55.03.82v11.14h-5.61V10.26h5.36v2.26c1.28-1.89,3.47-2.95,5.75-2.79,1.02-.04,2.03.1,3,.42Z" style="fill:#ffffff;"/>
+        <path d="M196.99,10.16l-.85,5.47c-1.05-.42-2.18-.63-3.31-.63-2.25-.16-4.21,1.54-4.36,3.8-.02.27-.01.55.03.82v11.14h-5.5V10.26h5.36v2.26c1.28-1.89,3.47-2.95,5.75-2.79.98-.03,1.96.11,2.89.42h0Z" style="fill:#ffffff;"/>
+        <path d="M218.04,20.49c.04.62.04,1.25,0,1.87h-14.63c.36,2.53,2.6,4.37,5.15,4.23,1.94.02,3.83-.66,5.33-1.9l3.21,3.53c-2.35,2.07-5.4,3.17-8.53,3.07-5.6.24-10.34-4.11-10.58-9.71-.01-.29-.01-.58,0-.87-.41-5.56,3.76-10.39,9.31-10.8.35-.03.7-.03,1.05-.02,5.45.08,9.81,4.57,9.72,10.02,0,.2-.01.4-.03.59h0ZM203.44,18.59h9.06c-.17-2.32-2.11-4.12-4.44-4.09-2.39-.1-4.43,1.71-4.62,4.09Z" style="fill:#ffffff;"/>
+        <path d="M240.89,17.63v13.05h-5.54v-11.18c0-2.96-1.48-4.58-3.98-4.58-2.32-.09-4.27,1.72-4.36,4.03,0,.2,0,.39.02.59v11.21h-5.54V10.26h5.4v2.43c1.35-1.97,3.64-3.1,6.03-2.96,4.2-.2,7.77,3.05,7.97,7.25.01.22.01.43,0,.65Z" style="fill:#ffffff;"/>
+        <path d="M243.82,10.26v-6.1h5.54v6.1h7.41v4.9h-7.41v7.51c0,2.54,1.34,3.53,3.07,3.53,1.33-.19,2.59-.72,3.67-1.52l2.01,4.3c-1.97,1.43-4.34,2.18-6.77,2.15-5.08.14-7.51-2.72-7.51-8.04v-7.93" style="fill:#ffffff;"/>
+        <path d="M17.91,0C8.1-.08.08,7.82,0,17.64c-.08,9.82,7.82,17.84,17.64,17.91.09,0,.18,0,.28,0V0Z" style="fill:#ffffff;"/>
+        <path d="M32.62,14.53c3.53,0,6-1.2,6-4.09h0c0-2.54-1.94-3.99-5.47-3.99h-8.22v8.08h7.69Z" style="fill:#ffffff;"/>
+        <path d="M33.11,28.95c3.95,0,6.42-1.2,6.42-4.09v-.18c0-2.54-2.08-3.99-5.82-3.99h-8.78v8.25h8.18Z" style="fill:#ffffff;"/>
+      </svg>
+    </div>
+    <p>Energy technology for businesses that demand more. &nbsp;&middot;&nbsp; <a href="https://www.blackcurrent.io">www.blackcurrent.io</a></p>
+  </div>
+  <p style="text-align: right;">© 2026 Blackcurrent. All rights reserved.</p>
+</footer>
+
+<!-- STICKY CTA -->
+<a href="#cta" class="sticky-cta" id="stickyCta">Talk to Us</a>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    // Category toggles
+    document.querySelectorAll('.faq-category-header').forEach(function (header) {
+      header.addEventListener('click', function () {
+        header.closest('.faq-category').classList.toggle('open');
+      });
+    });
+
+    // Item toggles
+    document.querySelectorAll('.faq-item-q').forEach(function (q) {
+      q.addEventListener('click', function () {
+        const item = q.closest('.faq-item');
+        const wasOpen = item.classList.contains('open');
+        item.closest('.faq-items').querySelectorAll('.faq-item').forEach(function (s) {
+          s.classList.remove('open');
+        });
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    // Open first category by default
+    var firstCat = document.getElementById('cat-flex');
+    if (firstCat) firstCat.classList.add('open');
+
+    // Sticky CTA
+    const stickyCta = document.getElementById('stickyCta');
+    const hero = document.getElementById('hero');
+
+    const obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        stickyCta.classList.toggle('visible', !e.isIntersecting);
+      });
+    }, { threshold: 0 });
+
+    obs.observe(hero);
+
+  }); // end DOMContentLoaded
+</script>
+</body>
+</html>
